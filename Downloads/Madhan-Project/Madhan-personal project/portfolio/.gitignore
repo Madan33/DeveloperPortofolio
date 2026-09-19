@@ -1,0 +1,8 @@
+# Ignore everything in parent directories
+../../../../
+..
+
+# Ignore common files
+.DS_Store
+*.log
+node_modules/
