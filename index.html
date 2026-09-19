@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Madhan Surthani - Full Stack Python Developer. Building production-grade web applications and AI solutions.">
+    <meta name="keywords" content="full stack developer, Python, Django, FastAPI, React, AI, portfolio">
+    <title>Madhan Surthani - Full Stack Python Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+        
+        body {
+            background-color: #060b08;
+            color: #e4e4e7;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Subtle green matrix background grid */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(34, 197, 94, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(34, 197, 94, 0.04) 1px, transparent 1px);
+        }
+        
+        .accent {
+            color: #22c55e;
+        }
+        
+        .accent-bg {
+            background-color: #22c55e;
+        }
+        
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #22c55e;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Marquee Ticker */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Floating WhatsApp CTA Button */
+        .whatsapp-float-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #22c55e;
+            color: #060b08;
+            padding: 12px 22px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float-btn:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 12px 35px rgba(34, 197, 94, 0.6);
+            background: #2bdf6b;
+        }
+        
+        .tech-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #a1a1aa;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .stack-card:hover {
+            border-color: #22c55e !important;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
+        }
+
+        .stack-card:hover .tech-tag {
+            border-color: rgba(34, 197, 94, 0.5);
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.08);
+        }
+        
+        .cta-btn {
+            background: #22c55e;
+            color: #060b08;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.25);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(34, 197, 94, 0.45);
+            background: #28d867;
+        }
+        
+        .cta-btn.secondary {
+            background: #111b14;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #ffffff;
+            box-shadow: none;
+        }
+        
+        .cta-btn.secondary:hover {
+            border-color: rgba(34, 197, 94, 0.6);
+            background: #17261d;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.15);
+        }
+        
+        /* Floating Pill Badges around IDE window */
+        .floating-badge {
+            background: rgba(18, 30, 23, 0.85);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #e4e4e7;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-family: 'Fira Code', monospace;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            position: absolute;
+            z-index: 20;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .floating-badge:hover {
+            border-color: #22c55e;
+            transform: scale(1.05);
+        }
+
+        .code-block {
+            background: transparent;
+            font-family: 'Fira Code', monospace;
+            font-size: 13.5px;
+            line-height: 1.8;
+            color: #d4d4d8;
+        }
+
+        .code-highlight-box {
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            background: rgba(34, 197, 94, 0.08);
+            border-radius: 8px;
+            padding: 3px 8px;
+            display: inline-block;
+        }
+        
+        .skill-category {
+            background: rgba(12, 20, 14, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: rgba(34, 197, 94, 0.4);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-grid relative">
+
+    <!-- Mouse Spotlight Effect ("only bright where cursor is") -->
+    <div id="mouse-spotlight" class="fixed inset-0 pointer-events-none z-10 transition-opacity duration-300" style="background: radial-gradient(350px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(34, 197, 94, 0.07), transparent 75%);"></div>
+    <div id="cursor-orb" class="fixed w-4 h-4 bg-[#22c55e] rounded-full pointer-events-none z-50 shadow-[0_0_10px_rgba(34,197,94,0.6)] transform -translate-x-1/2 -translate-y-1/2"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-[#060b08]/90 backdrop-blur-md z-50 border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-7 h-7 rounded-full bg-[#22c55e] text-[#060b08] font-bold text-xs flex items-center justify-center font-mono shadow-[0_0_10px_rgba(34,197,94,0.4)]">
+                    MS
+                </div>
+                <span class="text-white font-semibold tracking-tight text-base">Madhan Surthani</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                <a href="#stack" class="text-gray-400 hover:text-white transition">Stack</a>
+                <a href="#work" class="text-gray-400 hover:text-white transition">Work</a>
+                <a href="#experience" class="text-gray-400 hover:text-white transition">Experience</a>
+            </div>
+            <a href="#contact" class="hidden md:inline-flex border border-[#22c55e] text-[#22c55e] hover:bg-[#22c55e]/15 font-medium px-5 py-1.5 rounded-full text-sm transition-all duration-200">
+                Hire me
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center pt-28 pb-12 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 w-full relative z-20 my-auto">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Column Text Content -->
+                <div>
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#22c55e]/30 bg-[#22c55e]/10 text-xs font-mono text-[#22c55e] mb-8">
+                        <span class="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse shadow-[0_0_8px_#22c55e]"></span>
+                        AVAILABLE FOR NEW WORK
+                    </div>
+
+                    <!-- Main Heading -->
+                    <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.08]">
+                        Full Stack<br>
+                        <span class="text-[#22c55e]">Python</span><br>
+                        Engineer
+                    </h1>
+
+                    <!-- Description -->
+                    <p class="text-[#a1a1aa] text-base lg:text-lg mb-8 leading-relaxed max-w-xl">
+                        I build multi-tenant SaaS products, automation platforms and clean APIs — Django and FastAPI on the backend, React and Tailwind on the front. Two years shipping systems that other people's businesses run on.
+                    </p>
+
+                    <!-- 3 Hero Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <a href="#projects" class="cta-btn">
+                            View selected work <span>→</span>
+                        </a>
+                        <a href="#contact" class="cta-btn secondary">
+                            Get in touch
+                        </a>
+                        <a href="/resume.pdf" target="_blank" class="cta-btn secondary">
+                            Download Resume <span class="text-xs">📄</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: IDE Code Window & Floating Tech Badges -->
+                <div class="relative mt-8 md:mt-0">
+                    
+                    <!-- Floating Tech Badges (1:1 match to reference design Image 1) -->
+                    <div class="floating-badge -top-5 left-4 md:left-8 -rotate-3">Django</div>
+                    <div class="floating-badge top-1/4 -right-3 md:-right-6 rotate-3">FastAPI</div>
+                    <div class="floating-badge top-2/3 -right-2 md:-right-4">React.js</div>
+                    <div class="floating-badge -bottom-4 right-10 md:right-16 rotate-6">Tailwind</div>
+                    <div class="floating-badge -bottom-8 left-4 md:left-10 -rotate-6">MongoDB</div>
+
+                    <!-- Decorative Glowing Orbs -->
+                    <div class="absolute -top-6 right-20 w-3.5 h-3.5 rounded-full bg-[#22c55e] blur-[1px] shadow-[0_0_12px_#22c55e] z-10 animate-bounce"></div>
+                    <div class="absolute bottom-24 left-2 w-2.5 h-2.5 rounded-full bg-[#38bdf8] blur-[1px] shadow-[0_0_8px_#38bdf8] opacity-90 z-10"></div>
+                    <div class="absolute -bottom-6 left-1/4 w-7 h-7 rounded-full bg-[#22c55e] opacity-80 blur-[2px] shadow-[0_0_25px_#22c55e] z-10"></div>
+
+                    <!-- IDE Window Box -->
+                    <div class="bg-[#08100a]/95 border border-[#22c55e]/30 rounded-2xl p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-xl relative overflow-hidden">
+                        
+                        <!-- Top Bar with 3 macOS Buttons & Window Title -->
+                        <div class="flex items-center gap-2 pb-5 mb-5 border-b border-white/10">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                            <span class="text-xs font-mono text-[#a1a1aa] ml-4">engineer.py</span>
+                        </div>
+
+                        <!-- Code Box Syntax Highlighted Content -->
+                        <pre class="code-block overflow-x-auto text-left"><code><span class="text-[#22c55e]">class</span> <span class="text-white font-semibold">Engineer</span>:
+    <span class="text-slate-400">role</span>     = <span class="text-[#86efac]">"Full Stack Python"</span>
+    <span class="text-slate-400">backend</span>  = [<span class="text-[#86efac]">"Django"</span>, <span class="text-[#86efac]">"FastAPI"</span>]
+    <span class="text-slate-400">frontend</span> = [<span class="text-[#86efac]">"React"</span>, <span class="text-[#86efac]">"Tailwind"</span>]
+    <div class="code-highlight-box"><span class="text-[#22c55e] font-semibold">PostgreSQL</span> [<span class="text-[#86efac]">"Postgres"</span>, <span class="text-[#86efac]">"Mongo"</span>, <span class="text-[#86efac]">"MySQL"</span>]</div>
+
+    <span class="text-[#22c55e]">def</span> <span class="text-[#38bdf8]">ship</span>(<span class="text-slate-300">self</span>, <span class="text-slate-300">idea</span>):
+        <span class="text-[#22c55e]">return</span> <span class="text-[#22c55e]">production</span>(idea, <span class="text-amber-400">tests</span>=<span class="text-[#22c55e]">True</span>)<span class="inline-block w-2.5 h-4 bg-[#22c55e] ml-1 animate-pulse align-middle"></span></code></pre>
+
+                    </div>
+
+                    <!-- Straight Line Row of Pill Badges (Image 2 exact match) -->
+                    <div class="flex flex-wrap items-center gap-3 mt-5 justify-center md:justify-end">
+                        <div class="bg-[#121e17]/90 border border-[#22c55e]/30 text-[#e4e4e7] px-4 py-1.5 rounded-full text-xs font-mono backdrop-blur-md shadow-md">AWS</div>
+                        <div class="bg-[#121e17]/90 border border-[#22c55e]/30 text-[#e4e4e7] px-4 py-1.5 rounded-full text-xs font-mono backdrop-blur-md shadow-md">DynamoDB</div>
+                        <div class="bg-[#121e17]/90 border border-[#22c55e]/60 text-[#22c55e] px-4.5 py-1.5 rounded-full text-xs font-mono backdrop-blur-md shadow-md font-semibold flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse shadow-[0_0_6px_#22c55e]"></span> Generative AI
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Stats Summary Line (Image 1) -->
+        <div class="border-t border-white/5 bg-[#060b08]/90 py-4 font-mono text-xs text-[#a1a1aa] tracking-widest uppercase relative z-20 mt-12">
+            <div class="max-w-6xl mx-auto px-6 flex flex-wrap items-center gap-8 md:gap-16">
+                <span class="flex items-center gap-2"><span class="text-[#22c55e]">2</span> YRS EXPERIENCE</span>
+                <span class="flex items-center gap-2"><span class="text-[#22c55e]">4</span> FLAGSHIP BUILDS</span>
+                <span class="flex items-center gap-2"><span class="text-[#22c55e]">11</span> CORE TECHNOLOGIES</span>
+            </div>
+        </div>
+
+        <!-- Horizontal Tech Marquee Ticker Strip -->
+        <div class="border-y border-white/5 bg-[#08100a]/90 py-5 overflow-hidden relative z-20">
+            <div class="animate-marquee items-center space-x-12 whitespace-nowrap font-mono text-xl text-gray-400 font-medium">
+                <span class="flex items-center gap-4">React.js <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">AWS <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">DynamoDB <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">Generative AI <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">Tailwind <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">PostgreSQL <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">MongoDB <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">MySQL <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">Django <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">FastAPI <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">React.js <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">AWS <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">DynamoDB <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+                <span class="flex items-center gap-4">Generative AI <span class="w-2 h-2 rounded-full bg-[#22c55e]"></span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Stack Section (Image 2 & 3 exact match) -->
+    <section id="stack" class="py-24 border-t border-white/5 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="text-[#22c55e] font-mono text-xs border border-[#22c55e]/30 px-2.5 py-1 rounded bg-[#22c55e]/10">02</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">The stack</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Backend Card -->
+                <div class="stack-card bg-[#08100a]/90 border border-white/10 rounded-2xl p-7 transition-all duration-300 relative">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="text-white text-lg font-bold">Backend</h4>
+                        <span class="text-[#a1a1aa] font-mono text-[10px] tracking-widest uppercase">CORE</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">DRF</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Celery</span>
+                        <span class="tech-tag">WebSockets</span>
+                    </div>
+                </div>
+                
+                <!-- Frontend Card -->
+                <div class="stack-card bg-[#08100a]/90 border border-white/10 rounded-2xl p-7 transition-all duration-300 relative">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="text-white text-lg font-bold">Frontend</h4>
+                        <span class="text-[#a1a1aa] font-mono text-[10px] tracking-widest uppercase">UI</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">Tailwind</span>
+                        <span class="tech-tag">Bootstrap</span>
+                    </div>
+                </div>
+                
+                <!-- Data & AI Card -->
+                <div class="stack-card bg-[#08100a]/90 border border-white/10 rounded-2xl p-7 transition-all duration-300 relative">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="text-white text-lg font-bold">Data & AI</h4>
+                        <span class="text-[#a1a1aa] font-mono text-[10px] tracking-widest uppercase">STORAGE</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">DynamoDB</span>
+                        <span class="tech-tag">Generative AI</span>
+                        <span class="tech-tag">Schema design</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">OpenAI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How I Work Section (Image 2 & 3 exact match) -->
+    <section id="work" class="py-24 border-t border-white/5 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="text-[#22c55e] font-mono text-xs border border-[#22c55e]/30 px-2.5 py-1 rounded bg-[#22c55e]/10">01</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">How I work</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-start mt-8">
+                <div>
+                    <h3 class="text-2xl lg:text-3xl font-bold text-white mb-6 leading-snug">
+                        I start from the data model, not the screen. Most of what I build is multi-tenant, background-job heavy and integration-first — so isolation, idempotency and observability get designed in on day one rather than patched in later.
+                    </h3>
+                    <p class="text-[#a1a1aa] text-base leading-relaxed">
+                        Then I take it all the way to the browser: typed API contracts, a React or Django-templated front end that matches, and deploys that don't need me awake.
+                    </p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="bg-[#08100a]/90 p-8 rounded-2xl border border-white/10 hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.2)] group">
+                        <p class="text-[#22c55e] font-mono text-sm font-semibold mb-3">/01</p>
+                        <h4 class="text-xl font-bold text-white mb-3 group-hover:text-[#22c55e] transition">Architecture before code</h4>
+                        <p class="text-[#a1a1aa] text-sm leading-relaxed">Tenancy strategy, schema, and job boundaries mapped out before the first migration.</p>
+                    </div>
+                    
+                    <div class="bg-[#08100a]/90 p-8 rounded-2xl border border-white/10 hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.2)] group">
+                        <p class="text-[#22c55e] font-mono text-sm font-semibold mb-3">/02</p>
+                        <h4 class="text-xl font-bold text-white mb-3 group-hover:text-[#22c55e] transition">Automation as a habit</h4>
+                        <p class="text-[#a1a1aa] text-sm leading-relaxed">If a task repeats, it becomes a script, a worker, or a webhook — never a checklist.</p>
+                    </div>
+                    
+                    <div class="bg-[#08100a]/90 p-8 rounded-2xl border border-white/10 hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.2)] group">
+                        <p class="text-[#22c55e] font-mono text-sm font-semibold mb-3">/03</p>
+                        <h4 class="text-xl font-bold text-white mb-3 group-hover:text-[#22c55e] transition">Owned end to end</h4>
+                        <p class="text-[#a1a1aa] text-sm leading-relaxed">API, UI, database and deployment — one person accountable for the whole path.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Work / Projects Section -->
+    <section id="projects" class="py-24 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="section-label mb-4">WORK</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-16">Selected work</h2>
+            
+            <div class="space-y-10">
+                <!-- Project Card 1 -->
+                <div class="group cursor-pointer project-card" data-project="1" onclick="openCaseStudy(1)">
+                    <div class="grid md:grid-cols-2 gap-8 items-center p-8 lg:p-10 bg-[#08100a]/90 border border-white/10 rounded-2xl hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+                        <div>
+                            <p class="section-label mb-3">P-01 / ENTERPRISE</p>
+                            <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-[#22c55e] transition">ESOP Management System</h3>
+                            <p class="text-[#a1a1aa] mb-6 leading-relaxed">
+                                Automated stock grants, vesting schedules, exercise requests, and employee ownership tracking with JWT authentication, RBAC dashboards, SSO, and DocuSign-based approval workflows.
+                            </p>
+                            <div class="flex flex-wrap gap-2.5 mb-6">
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">Celery</span>
+                            </div>
+                            <button onclick="openCaseStudy(1)" class="text-[#22c55e] font-semibold hover:text-[#28d867] transition flex items-center gap-2 text-sm font-mono">
+                                Read case study <span>→</span>
+                            </button>
+                        </div>
+                        <div class="bg-gradient-to-br from-[#22c55e]/10 to-transparent rounded-xl p-8 border border-[#22c55e]/20 h-72 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">📊</div>
+                                <p class="text-[#a1a1aa] font-mono text-sm">ESOP Management</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="group cursor-pointer project-card" data-project="2" onclick="openCaseStudy(2)">
+                    <div class="grid md:grid-cols-2 gap-8 items-center p-8 lg:p-10 bg-[#08100a]/90 border border-white/10 rounded-2xl hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+                        <div>
+                            <p class="section-label mb-3">P-02 / SAAS</p>
+                            <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-[#22c55e] transition">E-Commerce Platform</h3>
+                            <p class="text-[#a1a1aa] mb-6 leading-relaxed">
+                                Full-stack e-commerce with product catalog, authentication, cart management, and Razorpay integration. Built with Django backend and Bootstrap 5 frontend with AJAX checkout.
+                            </p>
+                            <div class="flex flex-wrap gap-2.5 mb-6">
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">Razorpay</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">Redis</span>
+                            </div>
+                            <button onclick="openCaseStudy(2)" class="text-[#22c55e] font-semibold hover:text-[#28d867] transition flex items-center gap-2 text-sm font-mono">
+                                Read case study <span>→</span>
+                            </button>
+                        </div>
+                        <div class="bg-gradient-to-br from-[#22c55e]/10 to-transparent rounded-xl p-8 border border-[#22c55e]/20 h-72 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🛍️</div>
+                                <p class="text-[#a1a1aa] font-mono text-sm">E-Commerce Platform</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="group cursor-pointer project-card" data-project="3" onclick="openCaseStudy(3)">
+                    <div class="grid md:grid-cols-2 gap-8 items-center p-8 lg:p-10 bg-[#08100a]/90 border border-white/10 rounded-2xl hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+                        <div>
+                            <p class="section-label mb-3">P-03 / ENTERPRISE</p>
+                            <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-[#22c55e] transition">MIS / NetSuite Integration</h3>
+                            <p class="text-[#a1a1aa] mb-6 leading-relaxed">
+                                Enterprise MIS platform with NetSuite REST API and Restlet integrations. Built revenue dashboards, RMG modules, employee allocation, and resource projection workflows.
+                            </p>
+                            <div class="flex flex-wrap gap-2.5 mb-6">
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">NetSuite</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <button onclick="openCaseStudy(3)" class="text-[#22c55e] font-semibold hover:text-[#28d867] transition flex items-center gap-2 text-sm font-mono">
+                                Read case study <span>→</span>
+                            </button>
+                        </div>
+                        <div class="bg-gradient-to-br from-[#22c55e]/10 to-transparent rounded-xl p-8 border border-[#22c55e]/20 h-72 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">💼</div>
+                                <p class="text-[#a1a1aa] font-mono text-sm">MIS Integration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="group cursor-pointer project-card" data-project="4" onclick="openCaseStudy(4)">
+                    <div class="grid md:grid-cols-2 gap-8 items-center p-8 lg:p-10 bg-[#08100a]/90 border border-white/10 rounded-2xl hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+                        <div>
+                            <p class="section-label mb-3">P-04 / AI SOLUTIONS</p>
+                            <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-[#22c55e] transition">AI Chatbot & Lead Generation</h3>
+                            <p class="text-[#a1a1aa] mb-6 leading-relaxed">
+                                AI-powered chatbot using OpenAI APIs, vector embeddings, BERT, and semantic search. Implemented RAG-based retrieval for context-aware responses and lead capture workflows.
+                            </p>
+                            <div class="flex flex-wrap gap-2.5 mb-6">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">OpenAI</span>
+                                <span class="tech-tag">RAG</span>
+                                <span class="tech-tag">Semantic Search</span>
+                            </div>
+                            <button onclick="openCaseStudy(4)" class="text-[#22c55e] font-semibold hover:text-[#28d867] transition flex items-center gap-2 text-sm font-mono">
+                                Read case study <span>→</span>
+                            </button>
+                        </div>
+                        <div class="bg-gradient-to-br from-[#22c55e]/10 to-transparent rounded-xl p-8 border border-[#22c55e]/20 h-72 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🤖</div>
+                                <p class="text-[#a1a1aa] font-mono text-sm">AI Chatbot & Leads</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 (AI Legal Document Risk Analyzer) -->
+                <div class="group cursor-pointer project-card" data-project="5" onclick="openCaseStudy(5)">
+                    <div class="grid md:grid-cols-2 gap-8 items-center p-8 lg:p-10 bg-[#08100a]/90 border border-white/10 rounded-2xl hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+                        <div>
+                            <p class="section-label mb-3">P-05 / AI & LEGALTECH</p>
+                            <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-[#22c55e] transition">AI Legal Document Risk Analyzer</h3>
+                            <p class="text-[#a1a1aa] mb-6 leading-relaxed">
+                                LLM-powered contract review platform. Automatically extracts text using PyMuPDF, parses clauses, and runs RAG vector search with Claude & OpenAI for risk analysis, redline suggestions, and audit PDF reports.
+                            </p>
+                            <div class="flex flex-wrap gap-2.5 mb-6">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PyMuPDF</span>
+                                <span class="tech-tag">RAG & Vector Search</span>
+                                <span class="tech-tag">Claude / OpenAI</span>
+                                <span class="tech-tag">Redis</span>
+                            </div>
+                            <button onclick="openCaseStudy(5)" class="text-[#22c55e] font-semibold hover:text-[#28d867] transition flex items-center gap-2 text-sm font-mono">
+                                Read case study <span>→</span>
+                            </button>
+                        </div>
+                        <div class="bg-gradient-to-br from-[#22c55e]/10 to-transparent rounded-xl p-8 border border-[#22c55e]/20 h-72 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">⚖️</div>
+                                <p class="text-[#a1a1aa] font-mono text-sm">Legal Risk Analyzer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 (PBS - Points Based System) -->
+                <div class="group cursor-pointer project-card" data-project="6" onclick="openCaseStudy(6)">
+                    <div class="grid md:grid-cols-2 gap-8 items-center p-8 lg:p-10 bg-[#08100a]/90 border border-white/10 rounded-2xl hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+                        <div>
+                            <p class="section-label mb-3">P-06 / ENTERPRISE REWARDS</p>
+                            <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-[#22c55e] transition">PBS - Points Based System</h3>
+                            <p class="text-[#a1a1aa] mb-6 leading-relaxed">
+                                Employee rewards platform with Django REST backend, RBAC dashboards, real-time Socket.IO notifications, automated points calculations, Redis caching, and AWS EC2 & S3 deployment.
+                            </p>
+                            <div class="flex flex-wrap gap-2.5 mb-6">
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">DRF</span>
+                                <span class="tech-tag">Socket.IO</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">AWS EC2 / S3</span>
+                            </div>
+                            <button onclick="openCaseStudy(6)" class="text-[#22c55e] font-semibold hover:text-[#28d867] transition flex items-center gap-2 text-sm font-mono">
+                                Read case study <span>→</span>
+                            </button>
+                        </div>
+                        <div class="bg-gradient-to-br from-[#22c55e]/10 to-transparent rounded-xl p-8 border border-[#22c55e]/20 h-72 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🏆</div>
+                                <p class="text-[#a1a1aa] font-mono text-sm">PBS Rewards Platform</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Modal -->
+    <div id="caseStudyModal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md z-50 overflow-y-auto">
+        <div class="min-h-screen py-12 px-4">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex justify-between items-center mb-8">
+                    <a href="#projects" id="closeModal" class="text-[#22c55e] hover:text-[#28d867] transition flex items-center gap-2 text-sm font-mono">
+                        <span>←</span> Back to all work
+                    </a>
+                    <button id="closeModalBtn" class="text-gray-400 hover:text-white transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="modalContent" class="space-y-16">
+                    <!-- Dynamic JavaScript Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="section-label mb-4">BACKGROUND</p>
+            <h2 class="text-4xl font-bold text-white mb-12">About me</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-[#08100a]/90 p-8 rounded-xl border border-white/10 hover:border-[#22c55e] transition">
+                    <p class="text-4xl font-bold accent mb-2">1.5+</p>
+                    <p class="text-[#a1a1aa] text-sm">Years of professional experience</p>
+                </div>
+                <div class="bg-[#08100a]/90 p-8 rounded-xl border border-white/10 hover:border-[#22c55e] transition">
+                    <p class="text-4xl font-bold accent mb-2">7+</p>
+                    <p class="text-[#a1a1aa] text-sm">Shipped projects in production</p>
+                </div>
+                <div class="bg-[#08100a]/90 p-8 rounded-xl border border-white/10 hover:border-[#22c55e] transition">
+                    <p class="text-4xl font-bold accent mb-2">2</p>
+                    <p class="text-[#a1a1aa] text-sm">Companies built for</p>
+                </div>
+            </div>
+            
+            <div class="bg-[#08100a]/90 p-8 rounded-xl border border-white/10 leading-relaxed">
+                <p class="text-[#d4d4d8] mb-4">
+                    Python full-stack developer with 1.5+ years building production web applications. I specialize in REST API development, enterprise workflows, authentication, RBAC, and AI/GenAI solutions using LLMs, RAG, embeddings, and semantic search.
+                </p>
+                <p class="text-[#d4d4d8]">
+                    Experienced with Django, Django REST Framework, Flask, FastAPI, React, PostgreSQL, Redis, Celery, and AWS deployment. I also develop AI/GenAI solutions using LangChain, LangGraph, and OpenAI APIs for enterprise workflows and knowledge retrieval systems.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="section-label mb-4">EXPERIENCE</p>
+            <h2 class="text-4xl font-bold text-white mb-16">Two years, shipped</h2>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-[#08100a]/90 p-8 rounded-xl border border-white/10 hover:border-[#22c55e] transition">
+                    <p class="text-5xl font-bold accent mb-4">1.5+</p>
+                    <p class="text-[#a1a1aa] text-sm">years building production Python systems</p>
+                </div>
+                <div class="bg-[#08100a]/90 p-8 rounded-xl border border-white/10 hover:border-[#22c55e] transition">
+                    <p class="text-5xl font-bold text-white mb-4">4</p>
+                    <p class="text-[#a1a1aa] text-sm">flagship platforms taken to launch</p>
+                </div>
+                <div class="bg-[#08100a]/90 p-8 rounded-xl border border-white/10 hover:border-[#22c55e] transition">
+                    <p class="text-5xl font-bold text-white mb-4">3</p>
+                    <p class="text-[#a1a1aa] text-sm">database engines in day-to-day use</p>
+                </div>
+                <div class="bg-[#08100a]/90 p-8 rounded-xl border border-white/10 hover:border-[#22c55e] transition">
+                    <p class="text-5xl font-bold accent mb-4">∞</p>
+                    <p class="text-[#a1a1aa] text-sm">manual tasks replaced with automation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="section-label mb-4">05 / CONTACT</p>
+                    <h2 class="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+                        Have a build that needs <span class="accent">finishing?</span>
+                    </h2>
+                    <p class="text-[#a1a1aa] text-lg mb-8 leading-relaxed max-w-xl">
+                        Freelance projects, contract work or a full-time role — send the brief and I'll tell you honestly whether I'm the right fit.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <a href="https://wa.me/919121611428" target="_blank" rel="noopener noreferrer" class="cta-btn">
+                            Message on WhatsApp
+                        </a>
+                        <a href="mailto:madansurthani33@gmail.com" class="cta-btn secondary">
+                            madansurthani33@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="flex gap-8 text-xs font-mono tracking-widest uppercase">
+                        <a href="https://github.com" target="_blank" class="text-gray-400 hover:text-[#22c55e] transition">GITHUB</a>
+                        <a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-[#22c55e] transition">LINKEDIN</a>
+                        <a href="/resume.pdf" target="_blank" class="text-gray-400 hover:text-[#22c55e] transition">RÉSUMÉ PDF</a>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center justify-center">
+                    <div class="w-full h-80 bg-[#08100a]/90 rounded-2xl border border-white/10 backdrop-blur-md flex items-center justify-center p-8 text-center hover:border-[#22c55e] transition-all">
+                        <div>
+                            <div class="text-6xl mb-4">💬</div>
+                            <p class="text-white text-xl font-bold mb-2">Ready to talk?</p>
+                            <p class="text-[#a1a1aa] text-sm">Let's build something amazing together</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Image 1 exact match) -->
+    <footer class="border-t border-white/5 pt-12 pb-6 relative overflow-hidden bg-[#060b08]">
+        <div class="max-w-6xl mx-auto px-6">
+            <!-- Top Footer Bar -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-500">
+                <p>© 2024 Madhan Surthani</p>
+                <p>Built with Django, React & too much coffee</p>
+            </div>
+
+            <!-- Giant Typography Watermark Name (1:1 Reference Match) -->
+            <div class="mt-8 overflow-hidden select-none pointer-events-none text-center">
+                <h1 class="text-6xl sm:text-8xl md:text-[120px] lg:text-[150px] font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/30 via-white/10 to-transparent leading-none uppercase">
+                    Madhan Surthani
+                </h1>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp CTA Button (Bottom Right) -->
+    <a href="https://wa.me/919121611428" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l.999 1.586-1.025 3.742 3.837-1.006 1.532.945z"/>
+        </svg>
+        <span>Chat on WhatsApp</span>
+    </a>
+
+    <script>
+        // Mouse Spotlight Follower ("only bright where cursor is")
+        document.addEventListener('mousemove', (e) => {
+            document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+            
+            const orb = document.getElementById('cursor-orb');
+            if (orb) {
+                orb.style.left = `${e.clientX}px`;
+                orb.style.top = `${e.clientY}px`;
+            }
+        });
+
+        // Case study data
+        const caseStudies = {
+            1: {
+                title: "ESOP Management System",
+                label: "P-01 / ENTERPRISE",
+                client: "Corporate Enterprise",
+                description: "An ESOP management platform to automate stock grants, vesting schedules, exercise requests, and employee ownership tracking. Implemented JWT authentication, RBAC dashboards, SSO, session management, and DocuSign-based digital approval workflows.",
+                platform: "Web application + Admin Dashboard",
+                stack: ["Python", "Django", "PostgreSQL", "Redis", "Celery", "WebSockets", "JavaScript", "Bootstrap 5", "AWS EC2", "S3"],
+                link: "https://esopdevtwo.ealkay.com/auth/login",
+                displayLink: "esopdevtwo.ealkay.com",
+                features: [
+                    "Automated stock grant and vesting schedule management",
+                    "JWT authentication with SSO and session management",
+                    "Role-based access control (RBAC) for HR, Finance, Admin, and Employee",
+                    "DocuSign-based digital approval workflows",
+                    "Real-time analytics and vesting summaries",
+                    "Redis caching and asynchronous Celery processing"
+                ],
+                impact: "Streamlined ESOP administration for 500+ employees, reducing manual processing time by 85% and improving audit compliance",
+                icon: "📊",
+                next: 2,
+                prev: 6
+            },
+            2: {
+                title: "Saree E-Commerce Platform",
+                label: "P-02 / SAAS & E-COMMERCE",
+                client: "Handloom Business Technologies",
+                description: "Full-stack saree e-commerce platform with product catalog, customer authentication, shopping cart, order management, and checkout workflows. Integrated Razorpay payment gateway with webhook verification and AJAX-based checkout.",
+                platform: "Web application",
+                stack: ["Python", "Django", "PostgreSQL", "Redis", "Celery", "JavaScript", "Bootstrap 5", "Razorpay"],
+                link: "https://bhavyasree-e-commerce-platform.onrender.com/",
+                displayLink: "bhavyasree-e-commerce.onrender.com",
+                image: "https://kommodo.ai/i/uECE3rZHM0OC88y2UItK",
+                features: [
+                    "Complete product catalog with advanced search and filtering",
+                    "Secure customer authentication and profile management",
+                    "Shopping cart with real-time inventory sync",
+                    "Razorpay payment gateway integration with webhook verification",
+                    "AJAX-based checkout for secure payment processing",
+                    "Admin analytics dashboards with sales and inventory insights"
+                ],
+                impact: "Processed 10,000+ orders with 98% payment success rate, generating $500K+ in annual revenue with zero payment fraud incidents",
+                icon: "🛍️",
+                next: 3,
+                prev: 1
+            },
+            3: {
+                title: "MIS / NetSuite Integration",
+                label: "P-03 / ENTERPRISE",
+                client: "Enterprise Finance Solutions",
+                description: "Enterprise MIS platform supporting finance and resource management workflows. Implemented NetSuite REST API and Restlet integrations for data synchronization, RBAC-based access control, and comprehensive reporting.",
+                platform: "API + Web Dashboard",
+                stack: ["Python", "Django", "DRF", "React.js", "PostgreSQL", "REST APIs", "NetSuite Restlets", "RBAC"],
+                link: "https://mis.prowesssoft.com/auth/login",
+                displayLink: "mis.prowesssoft.com",
+                image: "https://kommodo.ai/i/sxQCKMkPk5tKp03NA1IM",
+                features: [
+                    "NetSuite REST API and Restlet integrations for data sync",
+                    "Revenue dashboards and RMG modules",
+                    "Employee allocation and resource projection workflows",
+                    "PDF and Excel reporting functionality",
+                    "Role-based access control for different user roles",
+                    "Real-time financial and resource analytics"
+                ],
+                impact: "Unified finance operations for 50+ teams, reducing data reconciliation time by 75% and improving financial visibility",
+                icon: "💼",
+                next: 4,
+                prev: 2
+            },
+            4: {
+                title: "AI Chatbot & Lead Generation",
+                label: "P-04 / AI SOLUTIONS",
+                client: "SaaS Lead Generation Platform",
+                description: "AI-powered chatbot using OpenAI APIs, vector embeddings, BERT, and semantic search for knowledge retrieval. Implemented RAG-based retrieval for context-aware responses and lead-capture workflows.",
+                platform: "Web application + REST APIs",
+                stack: ["Python", "OpenAI API", "Vector Embeddings", "RAG", "BERT", "Semantic Search", "REST APIs", "JavaScript"],
+                link: "https://chatbot.example.com",
+                displayLink: "chatbot.example.com",
+                features: [
+                    "OpenAI API integration with vector embeddings",
+                    "RAG-based knowledge retrieval from website content",
+                    "BERT and semantic search for improved understanding",
+                    "Context-aware conversational responses",
+                    "Intelligent lead capture and qualification",
+                    "REST API integration with CRM and sales systems"
+                ],
+                impact: "Generated 1,000+ qualified leads monthly with 35% conversion rate, reducing manual qualification time by 90%",
+                icon: "🤖",
+                next: 5,
+                prev: 3
+            },
+            5: {
+                title: "AI Legal Document Risk Analyzer",
+                label: "P-05 / AI & LEGALTECH",
+                client: "Confidential (Hyderabad: Onsite)",
+                description: "An AI-powered legal document analysis platform that allows users to upload PDF/DOCX contracts and automatically parses clauses, retrieves legal context using RAG + vector search, and analyzes contractual risks using Claude and OpenAI LLMs.",
+                platform: "Full-Stack AI SaaS Platform",
+                stack: ["Python", "PyMuPDF", "python-docx", "RAG", "Vector Search", "Claude API", "OpenAI API", "Redis", "PDF Generation"],
+                link: "https://legal-risk.example.com",
+                displayLink: "legal-risk.example.com",
+                features: [
+                    "Automated text extraction from PDF/DOCX contracts using PyMuPDF and python-docx",
+                    "Contract clause parsing and RAG + vector search context retrieval",
+                    "LLM risk analysis classifying contractual risks as High / Medium / Low",
+                    "Plain language risk explanations and automated redline / revision suggestions",
+                    "Audit-ready PDF risk report generation and historical analytics dashboard",
+                    "Redis caching for high-speed repeat contract processing"
+                ],
+                impact: "Reduced first-pass contract review from hours to minutes while improving risk identification compliance",
+                icon: "⚖️",
+                next: 6,
+                prev: 4
+            },
+            6: {
+                title: "PBS - Points Based System",
+                label: "P-06 / ENTERPRISE REWARDS",
+                client: "Prowess Software Services (Hyderabad)",
+                description: "Complete backend workflow for an enterprise employee rewards platform. Designed DB models, REST APIs, business logic, RBAC dashboards (Admin, Manager, Employee), and real-time Socket.IO notifications.",
+                platform: "Enterprise Web Platform",
+                stack: ["Python", "Django", "DRF", "Socket.IO", "Redis", "Celery", "PostgreSQL", "AWS EC2", "S3"],
+                link: "https://pbs.prowesssoft.com/auth/login",
+                displayLink: "pbs.prowesssoft.com",
+                image: "https://kommodo.ai/i/kRMASaKllQBluCp7t7Z4",
+                features: [
+                    "Complete database schema design, REST APIs, and core business logic modules",
+                    "RBAC with separate access control and dashboards for Admin, Managers, and Employees",
+                    "Real-time notifications using Socket.IO for instant reward updates",
+                    "Automated points calculation, duplicate detection, and bulk approval workflows",
+                    "Redis caching and asynchronous Celery processing for high-volume performance",
+                    "Production deployment on AWS EC2 with Amazon S3 for secure document storage"
+                ],
+                impact: "Automated end-to-end reward workflows for enterprise teams, eliminating duplicate points fraud and accelerating reward approvals by 90%",
+                icon: "🏆",
+                next: 1,
+                prev: 5
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('caseStudyModal');
+        const closeBtn = document.getElementById('closeModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalContent = document.getElementById('modalContent');
+
+        function openCaseStudy(projectId) {
+            const study = caseStudies[projectId];
+            
+            modalContent.innerHTML = `
+                <div class="space-y-12">
+                    <div>
+                        <p class="section-label mb-4">${study.label}</p>
+                        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">${study.title}</h1>
+                        <p class="text-[#a1a1aa] text-lg leading-relaxed">${study.description}</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-8 py-8 border-y border-white/10">
+                        <div>
+                            <p class="text-gray-500 text-xs font-mono font-semibold mb-2">CLIENT</p>
+                            <p class="text-white text-base font-semibold">${study.client}</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-xs font-mono font-semibold mb-2">PLATFORM</p>
+                            <p class="text-white text-base font-semibold">${study.platform}</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-xs font-mono font-semibold mb-2">STACK</p>
+                            <p class="text-[#22c55e] text-xs font-mono">${study.stack.join(' • ')}</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-xs font-mono font-semibold mb-2">WEBSITE</p>
+                            <a href="${study.link}" target="_blank" rel="noopener noreferrer" class="text-[#22c55e] hover:underline font-mono text-sm">
+                                ${study.displayLink || study.link} ↗
+                            </a>
+                        </div>
+                    </div>
+
+                    ${study.image ? `
+                        <div class="bg-[#08100a] rounded-2xl border border-[#22c55e]/30 overflow-hidden relative shadow-2xl group">
+                            <iframe src="${study.image}" title="${study.title}" class="w-full h-[480px] border-0 rounded-2xl"></iframe>
+                            <div class="p-4 bg-[#08100a]/90 border-t border-white/10 flex justify-between items-center">
+                                <span class="text-xs font-mono text-gray-400">Interactive Demo & Preview Showcase</span>
+                                <a href="${study.image}" target="_blank" class="text-[#22c55e] hover:underline text-xs font-mono font-semibold">
+                                    Open Full Screen Demo ↗
+                                </a>
+                            </div>
+                        </div>
+                    ` : `
+                        <div class="bg-gradient-to-br from-[#22c55e]/15 to-transparent rounded-2xl p-16 border border-[#22c55e]/20 flex items-center justify-center min-h-80">
+                            <div class="text-center">
+                                <div class="text-7xl mb-6">${study.icon}</div>
+                                <p class="text-white text-2xl font-bold">${study.title}</p>
+                                <p class="text-[#a1a1aa] text-sm mt-2">Project Showcase</p>
+                            </div>
+                        </div>
+                    `}
+
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-6">Key Features</h2>
+                        <ul class="grid md:grid-cols-2 gap-4">
+                            ${study.features.map(feature => `
+                                <li class="flex items-start gap-3 bg-[#08100a]/90 p-4 rounded-xl border border-[#22c55e]/20">
+                                    <span class="text-[#22c55e] text-lg flex-shrink-0">✓</span>
+                                    <span class="text-[#d4d4d8] text-sm leading-relaxed">${feature}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-6">Technologies Used</h2>
+                        <div class="flex flex-wrap gap-2.5">
+                            ${study.stack.map(tech => `
+                                <span class="tech-tag">${tech}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="bg-[#22c55e]/10 border border-[#22c55e]/30 rounded-xl p-8">
+                        <h3 class="text-xl font-bold text-[#22c55e] mb-3">Impact & Results</h3>
+                        <p class="text-[#e4e4e7] text-base leading-relaxed">${study.impact}</p>
+                    </div>
+
+                    <div class="border-t border-white/10 pt-10">
+                        <p class="text-gray-400 mb-6 text-base">Interested in building something similar?</p>
+                        <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                            <a href="https://wa.me/919121611428" target="_blank" rel="noopener noreferrer" class="cta-btn">
+                                Get in touch →
+                            </a>
+                            <button onclick="openCaseStudyFromModal(${study.next})" class="cta-btn secondary">
+                                See next project →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openCaseStudyFromModal(projectId) {
+            openCaseStudy(projectId);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.openCaseStudy = openCaseStudy;
+        window.closeModal = closeModal;
+        window.openCaseStudyFromModal = openCaseStudyFromModal;
+
+        closeBtn.addEventListener('click', closeModal);
+        closeModalBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#contact' || href === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target && modal.classList.contains('hidden')) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
