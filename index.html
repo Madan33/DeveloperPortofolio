@@ -229,9 +229,9 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="min-h-auto md:min-h-screen flex flex-col justify-center pt-16 md:pt-28 pb-8 md:pb-12 relative overflow-hidden"></section>
+    <section class="flex flex-col justify-center py-16 md:py-20 relative overflow-hidden"></section>
         <div class="w-full px-6 w-full relative z-20 my-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
                 
                 <!-- Left Column Text Content -->
                 <div>
@@ -462,6 +462,36 @@
             <h2 class="text-4xl md:text-5xl font-bold text-white mb-16">Selected work</h2>
             
             <div class="space-y-10">
+                <!-- Project Card 0: PMNE -->
+                <div class="group cursor-pointer project-card" data-project="0" onclick="openCaseStudy(0)">
+                    <div class="grid md:grid-cols-2 gap-8 items-center p-8 lg:p-10 bg-[#08100a]/90 border border-white/10 rounded-2xl hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+                        <div>
+                            <p class="section-label mb-3">P-00 / OPEN-SOURCE DATA PLATFORM</p>
+                            <h3 class="text-3xl font-bold text-white mb-4 group-hover:text-[#22c55e] transition">PMNE: GA4 + GSC Data Lakehouse</h3>
+                            <p class="text-[#a1a1aa] mb-6 leading-relaxed">
+                                High-performance 100% open-source analytics platform implementing Medallion Architecture (Bronze → Silver → Gold) for GA4 & GSC data. Features 365-day ingestion without quota limits, BigQuery warehouse with auto-scaling, multi-tenant RBAC in MongoDB, and live sync dashboard.
+                            </p>
+                            <div class="flex flex-wrap gap-2.5 mb-6">
+                                <span class="tech-tag">Python 3.13</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">BigQuery</span>
+                                <span class="tech-tag">Apache Parquet</span>
+                                <span class="tech-tag">Next.js 16</span>
+                                <span class="tech-tag">MongoDB</span>
+                            </div>
+                            <button onclick="openCaseStudy(0)" class="text-[#22c55e] font-semibold hover:text-[#28d867] transition flex items-center gap-2 text-sm font-mono">
+                                Read case study <span>→</span>
+                            </button>
+                        </div>
+                        <div class="bg-gradient-to-br from-[#22c55e]/10 to-transparent rounded-xl p-8 border border-[#22c55e]/20 h-72 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">📊</div>
+                                <p class="text-[#a1a1aa] font-mono text-sm">Analytics Lakehouse</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Project Card 1 -->
                 <div class="group cursor-pointer project-card" data-project="1" onclick="openCaseStudy(1)">
                     <div class="grid md:grid-cols-2 gap-8 items-center p-8 lg:p-10 bg-[#08100a]/90 border border-white/10 rounded-2xl hover:border-[#22c55e] transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
@@ -799,6 +829,31 @@
 
         // Case study data
         const caseStudies = {
+            0: {
+                title: "PMNE: GA4 + GSC Data Lakehouse & Intelligence Platform",
+                label: "P-00 / OPEN-SOURCE DATA PLATFORM",
+                client: "Open-Source Analytics",
+                description: "High-performance 100% open-source local data platform implementing Medallion Architecture (Bronze → Silver → Gold) for extracting, cleaning, transforming, and visualizing data from Google Analytics 4 (GA4) and Google Search Console (GSC). Includes 365-day ingestion without quota limits, BigQuery warehouse with auto-scaling, multi-tenant RBAC via MongoDB, and live analytics dashboard with one-click sync.",
+                platform: "Full-Stack Analytics Platform",
+                stack: ["Python 3.13", "FastAPI", "Uvicorn", "APScheduler", "Pandas", "BigQuery", "Apache Parquet", "MongoDB", "Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Google Analytics Data API v1beta"],
+                link: "https://github.com/prowesssoft/pmne",
+                displayLink: "github.com/prowesssoft/pmne",
+                features: [
+                    "Medallion Architecture: Bronze (raw API), Silver (cleaned), Gold (aggregated analytics)",
+                    "365-day GA4 & GSC multi-report ingestion without hitting quota limits",
+                    "BigQuery warehouse with auto-scaling and cost-optimized querying",
+                    "URL normalization for 100% seamless data joining across GA4 and GSC",
+                    "Multi-tenant workspace management with RBAC in MongoDB",
+                    "Automated APScheduler: daily 02:00 AM sync + every 6 hours",
+                    "Live 'Sync Data Now' button on Next.js dashboard",
+                    "8 pre-built analytical tables: page_performance, seo_performance, channel_performance, device_performance, geo_performance, query_performance, combined_page_performance"
+                ],
+                architecture: "Data flows through Bronze (raw Parquet) → Silver (cleaned BigQuery tables with URL normalization) → Gold (aggregated analytical tables). Backend leverages BigQuery's auto-scaling for handling millions of rows of analytics data efficiently.",
+                impact: "Enables teams to run unlimited GA4/GSC analytics queries with enterprise-grade BigQuery infrastructure, multi-tenant isolation, and built-in cost optimization through partitioning and clustering.",
+                icon: "📊",
+                next: 1,
+                prev: 6
+            },
             1: {
                 title: "ESOP Management System",
                 label: "P-01 / ENTERPRISE",
